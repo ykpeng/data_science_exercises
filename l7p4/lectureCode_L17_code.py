@@ -38,8 +38,22 @@ def testErrors(ntrials=10000,npts=100):
     pylab.xlabel('Sum')
     pylab.ylabel('Number of trials')
 
-##testErrors()
-##pylab.show()
+def testErrors2(ntrials=10000,npts=100):
+    results = [0] * ntrials
+    for i in xrange(ntrials):
+        s = 0   # sum of random points
+        for j in xrange(npts):
+            s += random.uniform(-1,1)
+        results[i] =s
+    # plot results in a histogram
+    pylab.hist(results,bins=50)
+    pylab.title('Sum of 100 random points -- Uniform PDF (10,000 trials)')
+    pylab.xlabel('Sum')
+    pylab.ylabel('Number of trials')
+
+# testErrors()
+# testErrors2(100000)
+# pylab.show()
 
 
 def fitData(fileName):
@@ -55,12 +69,12 @@ def fitData(fileName):
     # use line equation to graph predicted values
     estYVals = a*xVals + b
     k = 1/a
-    pylab.plot(xVals, estYVals, label = 'Linear fit, k = '
-               + str(round(k, 5)))
+    pylab.plot(xVals, estYVals, label = 'Linear fit,' + ' R2 = '
+    + str(round(rSquare(yVals, estYVals), 4)))
     pylab.legend(loc = 'best')
 
-##fitData('springData.txt')
-##pylab.show()
+# fitData('springData.txt')
+# pylab.show()
 
 def fitData1(fileName):
     xVals, yVals = getData(fileName)
@@ -117,12 +131,13 @@ def fitData3(fileName):
     # use line equation to graph predicted values
     estYVals = a*xVals + b
     k = 1/a
-    pylab.plot(xVals, estYVals, label = 'Linear fit, k = '
-               + str(round(k, 5)))
+    pylab.plot(xVals, estYVals, label = 'Linear fit,'
+               + ' R2 = '
+               + str(round(rSquare(yVals, estYVals), 4)))
     pylab.legend(loc = 'best')
 
-##fitData3('springData.txt')
-##pylab.show()
+# fitData3('springData.txt')
+# pylab.show()
 
 def getTrajectoryData(fileName):
     dataFile = open(fileName, 'r')
@@ -197,4 +212,8 @@ def tryFits1(fName):
 ##tryFits1('launcherData.txt')
 ##pylab.show()
 
+fitData('springData.txt')
+pylab.show()
 
+fitData3('springData.txt')
+pylab.show()
