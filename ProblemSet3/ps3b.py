@@ -374,10 +374,13 @@ class TreatedPatient(Patient):
         cnt = self.getTotalPop()
 
         for virus in self.viruses:
+            resistAll = True
             for drug in drugResist:
                 if not virus.isResistantTo(drug):
-                    cnt -= 1
+                    cen
                     break
+            if resistAll:
+                cnt += 1
         return cnt
 
     def update(self):
@@ -475,4 +478,4 @@ def renderPlot(vals1,vals2):
 
 # p = TreatedPatient([ ResistantVirus(0.1, 0.5, {'guttagonol': False}, 0.005) for i in range(100) ], 1000)
 # p.addPrescription("guttagonol")
-simulationWithDrug(100, 1000, 0.1, 0.05, {'guttagonol': False}, 0.005, 50)
+# simulationWithDrug(100, 1000, 0.1, 0.05, {'guttagonol': False}, 0.005, 50)
