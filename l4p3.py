@@ -27,5 +27,18 @@ def stdDev(nums):
     covariance = stdDev / mean
     return covariance
 
-nums = [10, 4, 12, 15, 20, 5]
-print stdDev(nums)
+def variance(nums):
+    n = float(len(nums))
+    if n == 0:
+        return float('NaN')
+    mean = sum(nums) / n
+    if mean == 0:
+        return float('NaN')
+    squaredDev = [(num - mean) ** 2 for num in nums]
+    variance = sum(squaredDev)
+    return variance
+
+# nums = [10, 4, 12, 15, 20, 5]
+# print stdDev(nums)
+nums = [-6, -6, -4, -4]
+print variance(nums)

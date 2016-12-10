@@ -5,27 +5,27 @@
 
 import string
 # This imports everything from `graph.py` as if it was defined in this file!
-from graph import * 
+from graph import *
 
 #
 # Problem 2: Building up the Campus Map
 #
-# Before you write any code, write a couple of sentences here 
-# describing how you will model this problem as a graph. 
+# Before you write any code, write a couple of sentences here
+# describing how you will model this problem as a graph.
 
 # This is a helpful exercise to help you organize your
 # thoughts before you tackle a big design problem!
 #
 
 def load_map(mapFilename):
-    """ 
+    """
     Parses the map file and constructs a directed graph
 
-    Parameters: 
+    Parameters:
         mapFilename : name of the map file
 
     Assumes:
-        Each entry in the map file consists of the following four positive 
+        Each entry in the map file consists of the following four positive
         integers, separated by a blank space:
             From To TotalDistance DistanceOutdoors
         e.g.
@@ -35,8 +35,10 @@ def load_map(mapFilename):
     Returns:
         a directed graph representing the map
     """
-    # TODO
     print "Loading map from file..."
+    f = open('mit_map.txt', 'r')
+    g = WeightedDigraph()
+    for line in f:
         
 
 #
@@ -46,13 +48,13 @@ def load_map(mapFilename):
 # and what the constraints are
 #
 
-def bruteForceSearch(digraph, start, end, maxTotalDist, maxDistOutdoors):    
+def bruteForceSearch(digraph, start, end, maxTotalDist, maxDistOutdoors):
     """
     Finds the shortest path from start to end using brute-force approach.
     The total distance travelled on the path must not exceed maxTotalDist, and
     the distance spent outdoor on this path must not exceed maxDistOutdoors.
 
-    Parameters: 
+    Parameters:
         digraph: instance of class Digraph or its subclass
         start, end: start & end building numbers (strings)
         maxTotalDist : maximum total distance on a path (integer)
@@ -62,9 +64,9 @@ def bruteForceSearch(digraph, start, end, maxTotalDist, maxDistOutdoors):
         start and end are numbers for existing buildings in graph
 
     Returns:
-        The shortest-path from start to end, represented by 
-        a list of building numbers (in strings), [n_1, n_2, ..., n_k], 
-        where there exists an edge from n_i to n_(i+1) in digraph, 
+        The shortest-path from start to end, represented by
+        a list of building numbers (in strings), [n_1, n_2, ..., n_k],
+        where there exists an edge from n_i to n_(i+1) in digraph,
         for all 1 <= i < k.
 
         If there exists no path that satisfies maxTotalDist and
@@ -83,7 +85,7 @@ def directedDFS(digraph, start, end, maxTotalDist, maxDistOutdoors):
     exceed maxTotalDist, and the distance spent outdoor on this path must
 	not exceed maxDistOutdoors.
 
-    Parameters: 
+    Parameters:
         digraph: instance of class Digraph or its subclass
         start, end: start & end building numbers (strings)
         maxTotalDist : maximum total distance on a path (integer)
@@ -93,9 +95,9 @@ def directedDFS(digraph, start, end, maxTotalDist, maxDistOutdoors):
         start and end are numbers for existing buildings in graph
 
     Returns:
-        The shortest-path from start to end, represented by 
-        a list of building numbers (in strings), [n_1, n_2, ..., n_k], 
-        where there exists an edge from n_i to n_(i+1) in digraph, 
+        The shortest-path from start to end, represented by
+        a list of building numbers (in strings), [n_1, n_2, ..., n_k],
+        where there exists an edge from n_i to n_(i+1) in digraph,
         for all 1 <= i < k.
 
         If there exists no path that satisfies maxTotalDist and
@@ -199,12 +201,12 @@ def directedDFS(digraph, start, end, maxTotalDist, maxDistOutdoors):
 #         bruteForceSearch(mitMap, '8', '50', LARGE_DIST, 0)
 #     except ValueError:
 #         bruteRaisedErr = 'Yes'
-    
+
 #     try:
 #         directedDFS(mitMap, '8', '50', LARGE_DIST, 0)
 #     except ValueError:
 #         dfsRaisedErr = 'Yes'
-    
+
 #     print "Expected: No such path! Should throw a value error."
 #     print "Did brute force search raise an error?", bruteRaisedErr
 #     print "Did DFS search raise an error?", dfsRaisedErr
@@ -220,12 +222,12 @@ def directedDFS(digraph, start, end, maxTotalDist, maxDistOutdoors):
 #         bruteForceSearch(mitMap, '10', '32', 100, LARGE_DIST)
 #     except ValueError:
 #         bruteRaisedErr = 'Yes'
-    
+
 #     try:
 #         directedDFS(mitMap, '10', '32', 100, LARGE_DIST)
 #     except ValueError:
 #         dfsRaisedErr = 'Yes'
-    
+
 #     print "Expected: No such path! Should throw a value error."
 #     print "Did brute force search raise an error?", bruteRaisedErr
 #     print "Did DFS search raise an error?", dfsRaisedErr
